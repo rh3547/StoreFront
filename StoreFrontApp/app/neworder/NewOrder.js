@@ -142,7 +142,7 @@ function($scope, ItemDBService, AppConfigService) {
                     if (group.type == "variation") {
                         $scope.variations.push(newGroup);
                     }
-                    else if (group.type == "topping") { // TODO: Change to 'addon' (in db too)
+                    else if (group.type == "addon") {
                         $scope.addons.push(newGroup);
                     }
                 });

@@ -1,10 +1,10 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET entire FoodType list  */
+/* GET entire ItemType list  */
 router.get('/types', function(req, res) {
     var db = req.db;
-    var collection = db.get('FoodType');
+    var collection = db.get('ItemType');
 
     collection.find({}, {}, function(e, data) {
         setHeaders(res);
@@ -12,22 +12,22 @@ router.get('/types', function(req, res) {
     });
 });
 
-/* GET single FoodType by _id */
+/* GET single ItemType by _id */
 router.get('/types/:id', function(req, res) {
     var db = req.db;
-    var collection = db.get('FoodType');
-    var foodId = req.params.id;
+    var collection = db.get('ItemType');
+    var itemId = req.params.id;
 
-    collection.find({'_id' : foodId}, {}, function(e, data) {
+    collection.find({'_id' : itemId}, {}, function(e, data) {
         setHeaders(res);
         res.json(data);
     });
 });
 
-/* GET entire FoodSize list  */
+/* GET entire ItemSize list  */
 router.get('/sizes', function(req, res) {
     var db = req.db;
-    var collection = db.get('FoodSize');
+    var collection = db.get('ItemSize');
 
     collection.find({}, {}, function(e, data) {
         setHeaders(res);
@@ -35,22 +35,22 @@ router.get('/sizes', function(req, res) {
     });
 });
 
-/* GET all FoodSize by FoodTypeId  */
+/* GET all ItemSize by ItemTypeId  */
 router.get('/sizes/:id', function(req, res) {
     var db = req.db;
-    var collection = db.get('FoodSize');
-    var foodId = req.params.id;
+    var collection = db.get('ItemSize');
+    var itemId = req.params.id;
 
-    collection.find({'FoodTypeId' : foodId}, {}, function(e, data) {
+    collection.find({'ItemTypeId' : itemId}, {}, function(e, data) {
         setHeaders(res);
         res.json(data);
     });
 });
 
-/* GET entire FoodOptionGroup list  */
+/* GET entire ItemOptionGroup list  */
 router.get('/optiongroups', function(req, res) {
     var db = req.db;
-    var collection = db.get('FoodOptionGroup');
+    var collection = db.get('ItemOptionGroup');
 
     collection.find({}, {}, function(e, data) {
         setHeaders(res);
@@ -58,22 +58,22 @@ router.get('/optiongroups', function(req, res) {
     });
 });
 
-/* GET all FoodOptionGroup by FoodTypeId  */
+/* GET all ItemOptionGroup by ItemTypeId  */
 router.get('/optiongroups/:id', function(req, res) {
     var db = req.db;
-    var collection = db.get('FoodOptionGroup');
-    var foodId = req.params.id;
+    var collection = db.get('ItemOptionGroup');
+    var itemId = req.params.id;
 
-    collection.find({'FoodTypeId' : foodId}, {}, function(e, data) {
+    collection.find({'ItemTypeId' : itemId}, {}, function(e, data) {
         setHeaders(res);
         res.json(data);
     });
 });
 
-/* GET entire FoodOption list  */
+/* GET entire ItemOption list  */
 router.get('/options', function(req, res) {
     var db = req.db;
-    var collection = db.get('FoodOption');
+    var collection = db.get('ItemOption');
 
     collection.find({}, {}, function(e, data) {
         setHeaders(res);
@@ -81,13 +81,13 @@ router.get('/options', function(req, res) {
     });
 });
 
-/* GET all FoodOption by FoodOptionGroupId  */
+/* GET all ItemOption by ItemOptionGroupId  */
 router.get('/options/:id', function(req, res) {
     var db = req.db;
-    var collection = db.get('FoodOption');
+    var collection = db.get('ItemOption');
     var groupId = req.params.id;
 
-    collection.find({'FoodOptionGroupId' : groupId}, {}, function(e, data) {
+    collection.find({'ItemOptionGroupId' : groupId}, {}, function(e, data) {
         setHeaders(res);
         res.json(data);
     });
