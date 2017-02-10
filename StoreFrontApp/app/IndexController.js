@@ -17,4 +17,6 @@ function($scope, AppConfigService) {
     themeStyles += ".theme-button:focus { background-color: " + appConfig.theme_button_color2 + " !important; background-position: 0 -15px; }";
     themeStyles += "</style>";
     $(themeStyles).appendTo("head");
+
+    $(".index-loading-mask").delay(1000).hide();
 }]);

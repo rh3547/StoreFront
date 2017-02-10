@@ -18,6 +18,25 @@
     font-size: 14px;
 }
 
+.index-loading-mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #ffffff;
+    z-index: 1;
+}
+
+.index-loading-mask i {
+    position: absolute;
+    width: 32px;
+    font-size: 32px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
 /* Bootstrap Overrides */
 .btn-primary {
     background-image: linear-gradient(to bottom, #b83333 0, #882626 100%) !important;
