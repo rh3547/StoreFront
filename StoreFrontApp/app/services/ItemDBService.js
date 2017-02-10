@@ -1,8 +1,9 @@
 'use strict';
 
 angular.module('StoreFrontApp.ItemDBService', [])
-.service('ItemDBService', function($http) {
-    var dbURL = 'http://localhost:3000/food';
+.service('ItemDBService', function($http, AppConfigService) {
+    var appConfig = AppConfigService.config;
+    var dbURL = appConfig.api_url + appConfig.api_item_route;
 
     /*
         getItemTypes

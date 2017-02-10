@@ -9,8 +9,13 @@ angular.module('StoreFrontApp.NewOrder', ['ngRoute'])
   });
 }])
 
-.controller('NewOrderController', ['$scope', 'ItemDBService', function($scope, ItemDBService) {
-    var TAX = 0.0875; // The sales tax
+.controller('NewOrderController', [
+    '$scope',
+    'ItemDBService',
+    'AppConfigService',
+function($scope, ItemDBService, AppConfigService) {
+    var appConfig = AppConfigService.config;
+    var TAX = appConfig.sales_tax; // The sales tax
 
     $scope.title = "New Order"; // Page title
 

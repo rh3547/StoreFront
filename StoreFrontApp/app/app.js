@@ -3,6 +3,7 @@
 // Declare app level module which depends on views, and components
 var module = angular.module('StoreFrontApp', [
     'ngRoute',
+    'StoreFrontApp.AppConfigService',
     'StoreFrontApp.ItemDBService',
     'StoreFrontApp.NewOrder',
     'StoreFrontApp.OrderHistory'
