@@ -7,10 +7,7 @@ router.get('/types', function(req, res) {
     var collection = db.get('FoodType');
 
     collection.find({}, {}, function(e, data) {
-        res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-        res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-        res.setHeader('Access-Control-Allow-Origin', '*');
-        res.setHeader("Content-Type", "application/json");
+        setHeaders(res);
         res.json(data);
     });
 });
@@ -22,10 +19,7 @@ router.get('/types/:id', function(req, res) {
     var foodId = req.params.id;
 
     collection.find({'_id' : foodId}, {}, function(e, data) {
-        res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-        res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-        res.setHeader('Access-Control-Allow-Origin', '*');
-        res.setHeader("Content-Type", "application/json");
+        setHeaders(res);
         res.json(data);
     });
 });
@@ -36,10 +30,7 @@ router.get('/sizes', function(req, res) {
     var collection = db.get('FoodSize');
 
     collection.find({}, {}, function(e, data) {
-        res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-        res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-        res.setHeader('Access-Control-Allow-Origin', '*');
-        res.setHeader("Content-Type", "application/json");
+        setHeaders(res);
         res.json(data);
     });
 });
@@ -51,10 +42,7 @@ router.get('/sizes/:id', function(req, res) {
     var foodId = req.params.id;
 
     collection.find({'FoodTypeId' : foodId}, {}, function(e, data) {
-        res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-        res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-        res.setHeader('Access-Control-Allow-Origin', '*');
-        res.setHeader("Content-Type", "application/json");
+        setHeaders(res);
         res.json(data);
     });
 });
@@ -65,10 +53,7 @@ router.get('/optiongroups', function(req, res) {
     var collection = db.get('FoodOptionGroup');
 
     collection.find({}, {}, function(e, data) {
-        res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-        res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-        res.setHeader('Access-Control-Allow-Origin', '*');
-        res.setHeader("Content-Type", "application/json");
+        setHeaders(res);
         res.json(data);
     });
 });
@@ -80,10 +65,7 @@ router.get('/optiongroups/:id', function(req, res) {
     var foodId = req.params.id;
 
     collection.find({'FoodTypeId' : foodId}, {}, function(e, data) {
-        res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-        res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-        res.setHeader('Access-Control-Allow-Origin', '*');
-        res.setHeader("Content-Type", "application/json");
+        setHeaders(res);
         res.json(data);
     });
 });
@@ -94,10 +76,7 @@ router.get('/options', function(req, res) {
     var collection = db.get('FoodOption');
 
     collection.find({}, {}, function(e, data) {
-        res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-        res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-        res.setHeader('Access-Control-Allow-Origin', '*');
-        res.setHeader("Content-Type", "application/json");
+        setHeaders(res);
         res.json(data);
     });
 });
@@ -109,12 +88,16 @@ router.get('/options/:id', function(req, res) {
     var groupId = req.params.id;
 
     collection.find({'FoodOptionGroupId' : groupId}, {}, function(e, data) {
-        res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-        res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-        res.setHeader('Access-Control-Allow-Origin', '*');
-        res.setHeader("Content-Type", "application/json");
+        setHeaders(res);
         res.json(data);
     });
 });
+
+function setHeaders(res) {
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader("Content-Type", "application/json");
+}
 
 module.exports = router;
