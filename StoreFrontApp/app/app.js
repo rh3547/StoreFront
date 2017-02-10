@@ -5,6 +5,7 @@ var module = angular.module('StoreFrontApp', [
     'ngRoute',
     'StoreFrontApp.AppConfigService',
     'StoreFrontApp.ItemDBService',
+    'StoreFrontApp.IndexController',
     'StoreFrontApp.NewOrder',
     'StoreFrontApp.OrderHistory'
 ])

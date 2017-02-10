@@ -260,22 +260,18 @@ function($scope, ItemDBService, AppConfigService) {
 
         // Add the variation and addon details, also tally up the extra cost
         if (options.variations.length > 0 || options.addons.length > 0) {
-            orderItemDetails += "\n";
 
             // Variations
             angular.forEach(options.variations, function(variation, index) {
-                orderItemDetails += "--------------------------------------------------";
+                orderItemDetails += "\n--------------------------------------------------";
                 orderItemDetails += "\n" + variation.name + ":\n  " + variation.choice;
-                // orderItemDetails += "\n----------------------------\n" + variation.choice;
                 if (variation.price > 0)  orderItemDetails += " + $" + variation.price;
                 variationCost += variation.price;
             });
 
-            orderItemDetails += "\n";
-
             // Addons
             angular.forEach(options.addons, function(addon, index) {
-                orderItemDetails += "--------------------------------------------------";
+                orderItemDetails += "\n--------------------------------------------------";
                 orderItemDetails += "\n" + addon.name + ":";
 
                 angular.forEach(addon.choices, function(choice, index2) {

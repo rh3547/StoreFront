@@ -2,11 +2,11 @@
 <!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en" ng-app="StoreFrontApp" class="no-js"> <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="StoreFrontApp" ng-controller="IndexController" class="no-js"> <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>StoreFront</title>
+  <title>{{ config.site_title }}</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -17,12 +17,17 @@
   <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="app.css">
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+  <!-- End Theme Styles -->
 </head>
 
 <body>
-    <div class="col-md-2 menu-wrapper">
+    <!-- Theme Styles -->
+    <div id="theme-styles">
+    </div>
+
+    <div class="col-md-2 menu-wrapper theme-color">
         <div class="menu-logo">
-            <img src="images/logo.png" width="200px">
+            <img ng-src="{{ config.logo_url }}" width="200px">
         </div>
 
         <h4 class="menu-title">
@@ -32,8 +37,8 @@
         </h4>
 
         <ul class="menu">
-            <li><a class="btn btn-primary" href="#!/order">Take Order</a></li>
-            <li><a class="btn btn-primary" href="#!/history">Order History</a></li>
+            <li><a class="btn btn-primary theme-button" href="#!/order">Take Order</a></li>
+            <li><a class="btn btn-primary theme-button" href="#!/history">Order History</a></li>
         </ul>
     </div>
 
@@ -56,6 +61,7 @@
   <script src="app.js"></script>
   <script src="services/AppConfigService.js"></script>
   <script src="services/ItemDBService.js"></script>
+  <script src="IndexController.js"></script>
   <script src="neworder/NewOrder.js"></script>
   <script src="orderhistory/OrderHistory.js"></script>
 </body>

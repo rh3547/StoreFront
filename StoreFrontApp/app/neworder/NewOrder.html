@@ -2,8 +2,8 @@
     <!-- The page title and header butons -->
     <h1 class="page-header">{{ title }}</h1>
     <div class="content-btn-menu">
-        <button class="btn btn-primary" ng-click="completeOrder()">Complete Order</button>
-        <button class="btn btn-primary" ng-click="clearOrder()">Clear Order</button>
+        <button class="btn btn-primary theme-button" ng-click="completeOrder()">Complete Order</button>
+        <button class="btn btn-primary theme-button" ng-click="clearOrder()">Clear Order</button>
     </div>
 
     <div class="col-md-9">
@@ -26,7 +26,7 @@
 
     <div class="col-md-3">
         <!-- The order pane on the right side of the screen -->
-        <div class="order-pane" id="order-pane">
+        <div class="order-pane theme-color" id="order-pane">
 
             <!-- Pane Header -->
             <h4 class="menu-title">
@@ -69,7 +69,7 @@
                 <div class="order-total">
                     <h5><span class="dollar-sign">$</span>{{ prices.total }}</h5><h4>Total</h4>
                 </div>
-                <button class="btn btn-primary order-checkout" ng-click="completeOrder()">Checkout</button>
+                <button class="btn btn-primary order-checkout theme-button" ng-click="completeOrder()">Checkout</button>
             </div>
         </div>
     </div>
@@ -109,7 +109,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary" ng-click="addToOrderModal()">Add Item</button>
+                    <button type="button" class="btn btn-primary theme-button" ng-click="addToOrderModal()">Add Item</button>
                 </div>
             </form>
         </div>
