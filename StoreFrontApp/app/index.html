@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="StoreFrontApp" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Pizza Planet</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="app.css">
+  <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+
+<body>
+    <div class="col-md-2 menu-wrapper">
+        <div class="menu-logo">
+            <img src="images/logo.png" width="200px">
+        </div>
+
+        <h4 class="menu-title">
+            <span class="text-strike text-white">&nbsp;&nbsp;</span>
+            MENU
+            <span class="text-strike text-white">&nbsp;&nbsp;</span>
+        </h4>
+
+        <ul class="menu">
+            <li><a class="btn btn-primary" href="#!/order">Take Order</a></li>
+            <li><a class="btn btn-primary" href="#!/history">Order History</a></li>
+        </ul>
+    </div>
+
+  <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+
+  <div class="col-md-10 content-wrapper">
+      <div ng-view class="content">
+      </div>
+  </div>
+
+  <!-- Angular Stuff -->
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="bower_components/moment/min/moment.min.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="helpers/formatLibrary.js"></script>
+  <script src="app.js"></script>
+  <script src="services/ItemDBService.js"></script>
+  <script src="neworder/NewOrder.js"></script>
+  <script src="orderhistory/OrderHistory.js"></script>
+</body>
+</html>

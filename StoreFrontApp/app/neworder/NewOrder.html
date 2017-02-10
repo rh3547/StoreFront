@@ -1,0 +1,117 @@
+item-type<div class="row">
+    <!-- The page title and header butons -->
+    <h1 class="page-header">{{ title }}</h1>
+    <div class="content-btn-menu">
+        <button class="btn btn-primary" ng-click="completeOrder()">Complete Order</button>
+        <button class="btn btn-primary" ng-click="clearOrder()">Clear Order</button>
+    </div>
+
+    <div class="col-md-9">
+        <!-- The list of store items in the center of the page -->
+        <div class="content-results">
+            <div ng-repeat="item in storeItems">
+                <button class="btn btn-primary item-type" ng-click="getItemSizes(item._id)">
+                    {{ item.name }}
+                    <p>{{ item.description }}</p>
+                </button>
+                <div>
+                    <button class="btn btn-primary item-size" ng-repeat="size in item.sizes" ng-click="selectItem(size._id, item._id)">
+                        {{ size.name }} - ${{ size.price }}
+                    </button>
+                </div>
+            </div>
+        </div>
+        {{ debug }}
+    </div>
+
+    <div class="col-md-3">
+        <!-- The order pane on the right side of the screen -->
+        <div class="order-pane" id="order-pane">
+
+            <!-- Pane Header -->
+            <h4 class="menu-title">
+                <span class="text-strike text-white">&nbsp;&nbsp;</span>
+                ORDER
+                <span class="text-strike text-white">&nbsp;&nbsp;</span>
+            </h4>
+
+            <!-- Individual Items | Anything in here will scroll -->
+            <div class="order-pane-inner">
+                <div class="order-item" ng-repeat="item in order['items']">
+                    <label for="order-item-{{ $index }}">
+                        <div class="order-item-text">
+                            <p>{{ item.name }}</p>
+                            <div class="order-item-arrow">&#10148;</div>
+                        </div>
+                    </label>
+                    <button class="btn btn-primary order-item-remove" ng-click="removeOrderItem(item)"><i class="fa fa-trash"></i></button>
+                    <input type="checkbox" id="order-item-{{ $index }}">
+                    <div class="order-item-details" ng-click="editOrderItem(item)">
+                        <div class="order-item-subarrow">&#10551;</div>
+                        <p>Details:</p>
+                        <div class="sep1-top" style="margin-bottom: 5px;"></div>
+                        <pre ng-trim="false">{{ item.details }}</pre>
+                    </div>
+                </div>
+                <p class="order-noitem-message" ng-show="order['items'].length == 0">There are no items in this order, add some by clicking the buttons to the left.</p>
+            </div>
+
+            <!-- Order Total -->
+            <div class="order-total-wrapper">
+                <div class="order-total">
+                    <h5><span class="dollar-sign">$</span>{{ prices.subtotal }}</h5><h4>Sub-Total</h4>
+                    <div class="sep1-top" style="margin-top: 5px;"></div>
+                </div>
+                <div class="order-total">
+                    <h5><span class="dollar-sign">$</span>{{ prices.tax }}</h5><h4>Tax</h4>
+                    <div class="sep1-top" style="margin-top: 5px;"></div>
+                </div>
+                <div class="order-total">
+                    <h5><span class="dollar-sign">$</span>{{ prices.total }}</h5><h4>Total</h4>
+                </div>
+                <button class="btn btn-primary order-checkout" ng-click="completeOrder()">Checkout</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Item Options Modal -->
+<div class="modal fade" id="ItemOptionsModal" tabindex="-1" role="dialog" aria-labelledby="ItemOptionsModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="ItemOptionsModalLabel">Modal title</h4>
+            </div>
+            <form action="#" onsubmit="javascript();">
+                <div class="modal-body" id="options-modal">
+                    <!-- Variations -->
+                    <div ng-repeat="var in variations" id="{{ var.name }}">
+                        <h4 class="page-header" style="margin-top: 2px;">{{ var.name }}</h4>
+                        <div class="option-section" id="variation-options">
+                            <div ng-repeat="item in var['options']">
+                                <input type="radio" itemName="{{ item.option }}" itemPrice="{{ item.price }}" name="{{ var.name }}" id="var-{{ item.option }}" class="var-input" required ng-checked="$index == 0">
+                                <label for="var-{{ item.option }}">{{ item.option }} <span ng-show="item.price" class="dollar-sign">+ ${{ item.price }}</span></label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Addons -->
+                    <div ng-repeat="add in addons" id="{{ add.name }}">
+                        <h4 class="page-header" style="margin-top: 2px;">{{ add.name }}</h4>
+                        <div class="option-section" id="variation-options">
+                            <div ng-repeat="item in add['options']">
+                                <input type="checkbox" itemName="{{ item.option }}" itemPrice="{{ item.price }}" name="{{ add.name }}" id="add-{{ item.option }}" class="top-input">
+                                <label for="add-{{ item.option }}">{{ item.option }} <span ng-show="item.price" class="dollar-sign" >+ ${{ item.price }}</span></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" ng-click="addToOrderModal()">Add Item</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
